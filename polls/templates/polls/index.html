@@ -1,0 +1,16 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+{% if object_list %}
+<ul class="nav flex-column">
+
+    {% for question in object_list %}
+         <a class="alert alert-secondary" role="alert" href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+    {% endfor %}
+
+</ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+{% endblock %}

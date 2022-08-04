@@ -1,0 +1,17 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+<h1>{{ question.question_text }}</h1>
+
+<ul class="nav flex-column">
+{% for choice in question.choice_set.all %}
+    <div class="alert alert-secondary" role="alert">
+    {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+    </div>
+{% endfor %}
+</ul>
+
+<a class="btn btn-secondary" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+
+{% endblock %}
